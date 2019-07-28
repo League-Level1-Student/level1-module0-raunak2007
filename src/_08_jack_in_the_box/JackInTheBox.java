@@ -11,23 +11,31 @@ import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class JackInTheBox implements ActionListener{
-	public void SurpriseBox() {
-		JFrame frame=new JFrame();
+	int times=0;
+	JFrame frame;
+	JPanel panel;
+	JButton button;
+	public void surpriseBox() {
+		frame=new JFrame();
+		panel=new JPanel();
+		frame.add(panel);
 		frame.setVisible(true);
-		JButton button= new JButton();
+		button= new JButton();
+		panel.add(button);
 		button.setText("Surprise");
-		frame.add(button);
 		frame.pack();
 		button.addActionListener(this);
 	}
 
-	public void actionPerformed() {
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		int times=0;
 		times+=1;
-		if(times>=5) {
+		System.out.println(times);
+		if(times==5) {
 			showPicture("jackInTheBox.png");
 			playSound("homer-woohoo.wav");
 			times=0;
@@ -69,9 +77,5 @@ public class JackInTheBox implements ActionListener{
 	    }
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
